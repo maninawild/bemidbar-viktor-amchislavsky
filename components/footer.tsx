@@ -1,0 +1,26 @@
+import Link from "next/link";
+import { navItems, site } from "@/lib/site";
+import { ProtectedEmail } from "@/components/protected-email";
+import { SocialLinks } from "@/components/social-links";
+
+export function Footer() {
+  return (
+    <footer className="footer">
+      <div>
+        <p className="footer-title">{site.name}</p>
+        <p>{site.subtitle}</p>
+      </div>
+      <nav aria-label="Навигация в подвале">
+        {navItems.map((item) => (
+          <Link key={item.href} href={item.href}>
+            {item.label}
+          </Link>
+        ))}
+      </nav>
+      <div className="footer-contact">
+        <ProtectedEmail className="email-action" />
+        <SocialLinks />
+      </div>
+    </footer>
+  );
+}

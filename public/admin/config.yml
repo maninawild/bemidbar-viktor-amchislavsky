@@ -1,0 +1,112 @@
+backend:
+  name: git-gateway
+  branch: main
+
+local_backend: true
+
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+i18n:
+  structure: multiple_folders
+  locales: [ru]
+  default_locale: ru
+
+collections:
+  - name: "articles"
+    label: "Статьи"
+    folder: "content/articles"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    fields:
+      - { label: "Заголовок", name: "title", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Дата", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "Краткое описание", name: "excerpt", widget: "text" }
+      - { label: "Обложка", name: "coverImage", widget: "image", required: false }
+      - { label: "Теги", name: "tags", widget: "list", required: false }
+      - { label: "Опубликовано", name: "published", widget: "boolean", default: true }
+      - { label: "Текст", name: "body", widget: "markdown" }
+
+  - name: "routes"
+    label: "Маршруты и экскурсии"
+    folder: "content/routes"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    fields:
+      - { label: "Название", name: "title", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Категория", name: "category", widget: "string" }
+      - { label: "Формат", name: "format", widget: "select", options: ["экскурсия", "лекция", "прогулка", "пешеходная экскурсия", "консультация"] }
+      - { label: "Дата / год", name: "date", widget: "string", required: false }
+      - { label: "Длительность", name: "duration", widget: "string", required: false }
+      - { label: "Язык", name: "language", widget: "string", required: false }
+      - { label: "Описание", name: "excerpt", widget: "text" }
+      - { label: "Места", name: "places", widget: "list", required: false }
+      - { label: "Источник", name: "source", widget: "string", required: false }
+      - { label: "Внешняя ссылка", name: "externalUrl", widget: "string", required: false }
+      - { label: "Теги", name: "tags", widget: "list", required: false }
+      - { label: "Опубликовано", name: "published", widget: "boolean", default: true }
+      - { label: "Текст", name: "body", widget: "markdown", required: false }
+
+  - name: "archive"
+    label: "Архив"
+    folder: "content/archive"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    fields:
+      - { label: "Название", name: "title", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Тип", name: "type", widget: "select", options: ["фото", "видео", "лекции", "статьи", "упоминания", "внешние страницы", "архивные публикации", "маршруты / события"] }
+      - { label: "Дата / год", name: "date", widget: "string", required: false }
+      - { label: "Источник", name: "source", widget: "string", required: false }
+      - { label: "Краткое описание", name: "excerpt", widget: "text" }
+      - { label: "Изображение", name: "image", widget: "image", required: false }
+      - { label: "YouTube embed URL", name: "videoUrl", widget: "string", required: false }
+      - { label: "Внешняя ссылка", name: "externalUrl", widget: "string", required: false }
+      - { label: "Теги", name: "tags", widget: "list", required: false }
+      - { label: "Опубликовано", name: "published", widget: "boolean", default: true }
+      - { label: "Текст / заметки", name: "body", widget: "markdown", required: false }
+
+  - name: "videos"
+    label: "Видео"
+    folder: "content/videos"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    fields:
+      - { label: "Название", name: "title", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "YouTube embed URL", name: "videoUrl", widget: "string" }
+      - { label: "Внешняя ссылка", name: "externalUrl", widget: "string", required: false }
+      - { label: "Дата / год", name: "date", widget: "string", required: false }
+      - { label: "Описание", name: "excerpt", widget: "text", required: false }
+      - { label: "Теги", name: "tags", widget: "list", required: false }
+
+  - name: "gallery"
+    label: "Фото и галереи"
+    folder: "content/gallery"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    fields:
+      - { label: "Название", name: "title", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Категория галереи", name: "category", widget: "select", options: ["Экскурсии", "Лекции", "Архив", "Большая Хоральная синагога", "Дом культуры Льва Лурье"], default: "Архив" }
+      - { label: "Дата / год", name: "date", widget: "string", required: false }
+      - { label: "Источник", name: "source", widget: "string", required: false }
+      - { label: "Описание", name: "excerpt", widget: "text", required: false }
+      - { label: "Изображения", name: "images", widget: "list", field: { label: "Изображение", name: "image", widget: "image" }, required: false }
+      - { label: "Связанная статья", name: "relatedArticle", widget: "string", required: false }
+      - { label: "Связанный маршрут", name: "relatedRoute", widget: "string", required: false }
+      - { label: "Связанный архивный элемент", name: "relatedArchiveItem", widget: "string", required: false }
+      - { label: "Внешняя ссылка", name: "externalUrl", widget: "string", required: false }
+      - { label: "Теги", name: "tags", widget: "list", required: false }
