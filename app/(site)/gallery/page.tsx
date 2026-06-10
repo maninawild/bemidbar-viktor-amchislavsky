@@ -71,7 +71,7 @@ export default function GalleryPage({ searchParams }: GalleryPageProps) {
                   <span>{item.year}</span>
                 </div>
                 <h2>{item.title}</h2>
-                <p>{item.caption}</p>
+                <p>{item.caption.split(/(?<=[.!?])\s+/)[0]}</p>
                 <div className="archive-card-bottom">
                   <span>{item.source}</span>
                   {item.relatedRoute && <span>{item.relatedRoute}</span>}

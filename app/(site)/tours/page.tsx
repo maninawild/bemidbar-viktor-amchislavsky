@@ -18,11 +18,24 @@ function contactHref(route: ViktorRoute) {
   return `/contacts?tema=${encodeURIComponent(route.title)}`;
 }
 
+function shortSentence(text: string) {
+  return text.split(/(?<=[.!?])\s+/)[0] ?? text;
+}
+
+function routeChips(route: ViktorRoute) {
+  return [
+    route.format,
+    route.duration,
+    route.language,
+    route.lurieArchive ? "ДК Льва Лурье" : undefined
+  ].filter((chip): chip is string => Boolean(chip));
+}
+
 export default function ServicesPage() {
   const routes = routeCategories.flatMap((category) => category.routes as ViktorRoute[]);
 
   return (
-    <>
+    <div className="tours-page">
       <section className="page-hero">
         <p className="eyebrow">{trustMarker}</p>
         <h1>Маршруты Виктора</h1>
@@ -33,7 +46,7 @@ export default function ServicesPage() {
         </p>
       </section>
 
-      <section className="section archive-intro">
+      <section className="section archive-intro compact-section">
         <div>
           <p className="eyebrow">Авторские маршруты</p>
           <h2>Город как архив, биография и культурная сцена</h2>
@@ -45,7 +58,7 @@ export default function ServicesPage() {
         </p>
       </section>
 
-      <section className="section seo-text">
+      <section className="section seo-text compact-section">
         <p className="eyebrow">Экскурсии по еврейскому Петербургу</p>
         <h2>Маршруты для частных прогулок, групп и образовательных программ</h2>
         <p>
@@ -87,30 +100,15 @@ export default function ServicesPage() {
                   </div>
                 )}
                 <div className="route-card-top">
-                  <span className="badge">{route.format}</span>
                   <span className="route-category-name">{route.category}</span>
                 </div>
                 <h3>{route.title}</h3>
-                <p>{route.description}</p>
-                {(route.duration || route.language) && (
-                  <div className="route-details">
-                    {route.duration && <span>Длительность: {route.duration}</span>}
-                    {route.language && <span>Язык: {route.language}</span>}
-                  </div>
-                )}
-                {route.places && (
-                  <p className="route-places">
-                    <strong>Места:</strong> {route.places.join("; ")}
-                  </p>
-                )}
-                {route.lurieArchive && (
-                  <p className="route-note">Маршрут проводился в ДК Льва Лурье</p>
-                )}
-                {route.sourceUrl && (
-                  <a className="route-source" href={route.sourceUrl} target="_blank" rel="noreferrer">
-                    Источник: {route.sourceLabel}
-                  </a>
-                )}
+                <p>{shortSentence(route.description)}</p>
+                <div className="route-details">
+                  {routeChips(route).map((chip) => (
+                    <span key={chip}>{chip}</span>
+                  ))}
+                </div>
                 <Link className="route-cta" href={contactHref(route)}>
                   Обсудить маршрут
                 </Link>
@@ -183,6 +181,6 @@ export default function ServicesPage() {
           }
         ]}
       />
-    </>
+    </div>
   );
 }

@@ -26,6 +26,10 @@ function getYouTubeTitle(item: ArchiveItem) {
   return `${item.title} — ${item.source}`;
 }
 
+function shortExcerpt(text: string) {
+  return text.split(/(?<=[.!?])\s+/)[0] ?? text;
+}
+
 export default function ArchivePage({ searchParams }: ArchivePageProps) {
   const selectedType = searchParams?.type ?? "all";
   const visibleItems =
@@ -107,9 +111,9 @@ export default function ArchivePage({ searchParams }: ArchivePageProps) {
                 <span>{item.date}</span>
               </div>
               <h2>{item.title}</h2>
-              <p>{item.excerpt}</p>
+              <p>{shortExcerpt(item.excerpt)}</p>
               <div className="tags">
-                {item.tags.map((tag) => (
+                {item.tags.slice(0, 3).map((tag) => (
                   <span key={tag}>{tag}</span>
                 ))}
               </div>

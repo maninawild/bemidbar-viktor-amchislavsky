@@ -1,4 +1,5 @@
 import { Footer } from "@/components/footer";
+import { FloatingCta } from "@/components/floating-cta";
 import { Header } from "@/components/header";
 
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
@@ -9,6 +10,7 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
       </a>
       <Header />
       <main id="main-content">{children}</main>
+      <FloatingCta />
       <Footer />
     </>
   );

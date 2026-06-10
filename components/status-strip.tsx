@@ -2,9 +2,9 @@ import { statusItems } from "@/lib/site";
 
 export function StatusStrip() {
   return (
-    <section className="status-strip" aria-label="Профессиональный статус">
+    <section className="status-strip trust-block" aria-label="Профессиональный статус">
       <div className="status-strip-title">
-        <p className="eyebrow">Статус</p>
+        <p className="eyebrow">Виктор Амчиславский</p>
         <h2>Виктор Амчиславский</h2>
       </div>
       <div className="status-strip-items">

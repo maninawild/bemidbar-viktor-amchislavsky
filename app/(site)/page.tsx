@@ -6,7 +6,7 @@ import { ContactBlock } from "@/components/contact-block";
 import { JsonLd } from "@/components/json-ld";
 import { ReviewsSection } from "@/components/reviews-section";
 import { StatusStrip } from "@/components/status-strip";
-import { bio, positioning, services, site, statusPhrase, trustMarker } from "@/lib/site";
+import { archiveItems, bio, galleryItems, services, site, statusPhrase, trustMarker } from "@/lib/site";
 import { getArticles } from "@/lib/articles";
 import { pageMetadata } from "@/lib/seo";
 
@@ -19,17 +19,20 @@ export const metadata: Metadata = pageMetadata({
 
 export default function HomePage() {
   const articles = getArticles().slice(0, 3);
+  const featuredArticle = articles[0];
+  const featuredVideo = archiveItems.find((item) => item.videoUrl);
+  const featuredPhoto = galleryItems.find((item) => item.category === "Архив") ?? galleryItems[0];
 
   return (
     <>
       <section className="hero">
         <div className="hero-copy">
-          <p className="eyebrow">Еврейский Петербург · История · Культурная память</p>
-          <h1 className="hero-wordmark">Бемидбар</h1>
-          <p className="subtitle">Интеллектуальный портал Виктора Амчиславского</p>
-          <p className="hero-trust">{trustMarker}</p>
-          <p className="hero-status">{statusPhrase}</p>
-          <p className="lead">{positioning}</p>
+          <p className="eyebrow">Бемидбар · Еврейский Петербург · Русско-еврейская история</p>
+          <h1>Еврейский Петербург. История. Память. Люди.</h1>
+          <p className="lead">
+            Авторские экскурсии, лекции и исследования Виктора Амчиславского о
+            еврейском Петербурге, городской памяти и скрытых слоях истории.
+          </p>
           <div className="actions">
             <Link className="button button-primary" href="/tours#contact">
               Выбрать экскурсию
@@ -52,6 +55,30 @@ export default function HomePage() {
       </section>
 
       <StatusStrip />
+
+      <section className="section split-section viktor-identity">
+        <div>
+          <p className="eyebrow">Автор портала</p>
+          <h2>Виктор Амчиславский</h2>
+        </div>
+        <div>
+          <p className="hero-status">{statusPhrase}</p>
+          <p>{bio}</p>
+          <Link className="text-link" href="/about">
+            О Викторе
+          </Link>
+        </div>
+      </section>
+
+      <section className="section trust-section compact-section">
+        <p className="eyebrow">Доверие и контекст</p>
+        <div className="trust-grid" aria-label="Площадки и проекты">
+          <span>Дом культуры Льва Лурье</span>
+          <span>Большая Хоральная синагога</span>
+          <span>Jewish Pearls</span>
+          <span>Среди своих</span>
+        </div>
+      </section>
 
       <section className="section seo-text">
         <p className="eyebrow">Бемидбар</p>
@@ -76,6 +103,47 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="section archive-slice">
+        <div className="section-heading">
+          <p className="eyebrow">Из архива</p>
+          <h2>Тексты, видео и визуальная память</h2>
+        </div>
+        <div className="archive-slice-grid">
+          {featuredArticle && (
+            <article className="archive-slice-card">
+              <span className="badge">статья</span>
+              <h3>{featuredArticle.title}</h3>
+              <p>{featuredArticle.excerpt}</p>
+              <Link className="text-link" href={`/articles/${featuredArticle.slug}`}>
+                Читать
+              </Link>
+            </article>
+          )}
+          {featuredVideo && (
+            <article className="archive-slice-card">
+              <span className="badge">видео</span>
+              <h3>{featuredVideo.title}</h3>
+              <p>{featuredVideo.excerpt}</p>
+              <Link className="text-link" href="/archive?type=видео">
+                Смотреть в архиве
+              </Link>
+            </article>
+          )}
+          {featuredPhoto && (
+            <article className="archive-slice-card archive-slice-photo">
+              <div className="archive-slice-image">
+                <Image src={featuredPhoto.image} alt={`${featuredPhoto.title}: ${featuredPhoto.caption}`} fill sizes="(max-width: 900px) 100vw, 33vw" />
+              </div>
+              <span className="badge">фото</span>
+              <h3>{featuredPhoto.title}</h3>
+              <Link className="text-link" href="/gallery">
+                В галерею
+              </Link>
+            </article>
+          )}
+        </div>
+      </section>
+
       <section className="section">
         <div className="section-heading">
           <p className="eyebrow">Экскурсии и лекции</p>
@@ -92,17 +160,6 @@ export default function HomePage() {
         </div>
         <Link className="text-link" href="/tours">
           Все направления
-        </Link>
-      </section>
-
-      <section className="section split-section">
-        <div>
-          <p className="eyebrow">О Викторе</p>
-          <h2>Историк, краевед, исследователь русско-еврейского наследия</h2>
-        </div>
-        <p>{bio}</p>
-        <Link className="text-link" href="/about">
-          Подробнее
         </Link>
       </section>
 
