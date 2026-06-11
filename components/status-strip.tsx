@@ -1,7 +1,7 @@
 import { statusItems } from "@/lib/site";
-import { OrnamentIcon } from "@/components/ornament-icon";
+import { BemidbarTrustIcon, type BemidbarTrustIconName } from "@/components/icons/bemidbar-icons";
 
-const icons = ["lurie", "synagogue", "heritage", "pearls"] as const;
+const icons: BemidbarTrustIconName[] = ["lurie", "synagogue", "heritage", "pearls"];
 
 export function StatusStrip() {
   return (
@@ -9,7 +9,7 @@ export function StatusStrip() {
       <div className="status-strip-items">
         {statusItems.map((item, index) => (
           <span key={item}>
-            <OrnamentIcon name={icons[index] ?? "heritage"} />
+            <BemidbarTrustIcon name={icons[index] ?? "heritage"} />
             {item}
           </span>
         ))}

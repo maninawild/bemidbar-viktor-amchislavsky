@@ -10,6 +10,7 @@ export const site = {
     "https://www.facebook.com/victor.amchislavsky?rdid=bTyizFAniWpVW03Y&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1EEYF5zRpG%2F#",
   instagram: "https://www.instagram.com/am_skiy/",
   vk: "https://vk.com/id421989",
+  telegram: "",
   locale: "ru_RU"
 };
 
@@ -25,11 +26,52 @@ export const statusItems = [
   "Создатель проекта Jewish Pearls"
 ];
 
+export const trustPartners = [
+  {
+    title: "Дом культуры Льва Лурье",
+    href: "https://dklurie.ru/",
+    description: "Петербургские экскурсии, лекции и культурные программы",
+    icon: "lurie"
+  },
+  {
+    title: "Большая Хоральная синагога",
+    href: "https://sinagoga.jeps.ru/",
+    description: "Община, библиотека и еврейская история Петербурга",
+    icon: "synagogue"
+  },
+  {
+    title: "Среди своих",
+    href: "https://sredisvoih.com/",
+    description: "Лекции и образовательные курсы о еврейской культуре",
+    icon: "heritage"
+  },
+  {
+    title: "НКО ЕВА, Петербург",
+    href: "https://eva.spb.ru/",
+    description: "Публичные лекции, видеоархив и культурная память",
+    icon: "heritage"
+  },
+  {
+    title: "ЕСОД",
+    href: "https://esod.spb.ru/",
+    description: "Еврейский культурный центр Санкт-Петербурга",
+    icon: "synagogue"
+  }
+] as const;
+
+export const jewishPearls = {
+  title: "Jewish Pearls",
+  status: "В разработке",
+  description:
+    "Jewish Pearls — отдельный проект Виктора Амчиславского о людях, местах и сюжетах еврейской памяти Петербурга. Раздел находится в разработке. Вы можете поддержать проект связавшись с нами"
+};
+
 export const navItems = [
   { href: "/", label: "Главная" },
   { href: "/tours", label: "Экскурсии и лекции" },
   { href: "/articles", label: "Статьи" },
   { href: "/library", label: "Библиотека" },
+  { href: "/jewish-pearls", label: "Jewish Pearls" },
   { href: "/archive", label: "Архив" },
   { href: "/gallery", label: "Галерея" },
   { href: "/reviews", label: "Отзывы" },

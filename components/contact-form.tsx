@@ -54,7 +54,7 @@ export function ContactForm() {
       </label>
       <label>
         Сообщение
-        <textarea name="message" rows={5} required />
+        <textarea name="message" rows={3} required />
       </label>
       <button className="button button-primary" type="submit" disabled={status === "sending"}>
         {status === "sending" ? "Отправляем..." : "Отправить запрос"}

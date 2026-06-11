@@ -3,11 +3,22 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArticleCard } from "@/components/article-card";
 import { ContactBlock } from "@/components/contact-block";
+import { BemidbarTrustIcon } from "@/components/icons/bemidbar-icons";
 import { JsonLd } from "@/components/json-ld";
 import { OrnamentIcon, type OrnamentIconName } from "@/components/ornament-icon";
 import { ReviewsSection } from "@/components/reviews-section";
 import { StatusStrip } from "@/components/status-strip";
-import { archiveItems, bio, galleryItems, services, site, statusPhrase, trustMarker } from "@/lib/site";
+import {
+  archiveItems,
+  bio,
+  galleryItems,
+  jewishPearls,
+  services,
+  site,
+  statusPhrase,
+  trustMarker,
+  trustPartners
+} from "@/lib/site";
 import { getArticles } from "@/lib/articles";
 import { pageMetadata } from "@/lib/seo";
 
@@ -132,12 +143,32 @@ export default function HomePage() {
       </section>
 
       <section className="section trust-section compact-section light-section">
-        <p className="eyebrow">Доверие и контекст</p>
-        <div className="trust-grid" aria-label="Площадки и проекты">
-          <span>Дом культуры Льва Лурье</span>
-          <span>Большая Хоральная синагога</span>
-          <span>Jewish Pearls</span>
-          <span>Среди своих</span>
+        <div className="section-heading">
+          <p className="eyebrow">Мы доверяем</p>
+          <h2>Партнёры, площадки и культурный контекст</h2>
+        </div>
+        <div className="trust-grid trust-partner-grid" aria-label="Партнёры и источники доверия">
+          {trustPartners.map((partner) => (
+            <a href={partner.href} key={partner.href} target="_blank" rel="noreferrer">
+              <BemidbarTrustIcon name={partner.icon} />
+              <span>{partner.title}</span>
+              <small>{partner.description}</small>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section className="section jewish-pearls-section light-section">
+        <div className="jewish-pearls-card">
+          <BemidbarTrustIcon name="pearls" />
+          <div>
+            <p className="eyebrow">{jewishPearls.status}</p>
+            <h2>{jewishPearls.title}</h2>
+            <p>{jewishPearls.description}</p>
+          </div>
+          <Link className="button button-secondary" href="/jewish-pearls">
+            О проекте
+          </Link>
         </div>
       </section>
 

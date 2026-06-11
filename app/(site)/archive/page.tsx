@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { JsonLd } from "@/components/json-ld";
 import { OrnamentIcon, type OrnamentIconName } from "@/components/ornament-icon";
+import { VideoEmbed } from "@/components/video-embed";
 import { archiveFilters, archiveItems, type ArchiveItem } from "@/lib/site";
 import { breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
 
@@ -64,14 +65,7 @@ export default function ArchivePage({ searchParams }: ArchivePageProps) {
         <div className="video-grid">
           {videoItems.map((item) => (
             <article className="video-card" key={item.title}>
-              <div className="archive-card-image">
-                <Image
-                  src={item.image ?? "/images/viktor/viktor-amchislavsky-hero.webp"}
-                  alt={`${getYouTubeTitle(item)}: видеоматериал`}
-                  fill
-                  sizes="(max-width: 900px) 100vw, 50vw"
-                />
-              </div>
+              <VideoEmbed title={getYouTubeTitle(item)} videoUrl={item.videoUrl!} />
               <div className="video-card-copy">
                 <span className="badge badge-with-icon"><OrnamentIcon name="video" />{item.source}</span>
                 <h3>{item.title}</h3>
@@ -103,7 +97,9 @@ export default function ArchivePage({ searchParams }: ArchivePageProps) {
         <div className="archive-grid">
           {visibleItems.map((item) => (
             <article className="archive-card" key={`${item.type}-${item.title}`}>
-              {item.image && (
+              {item.videoUrl ? (
+                <VideoEmbed title={getYouTubeTitle(item)} videoUrl={item.videoUrl} />
+              ) : item.image && (
                 <div className="archive-card-image">
                   <Image
                     src={item.image}
