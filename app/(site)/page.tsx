@@ -21,14 +21,51 @@ export default function HomePage() {
   const articles = getArticles().slice(0, 3);
   const featuredArticle = articles[0];
   const featuredVideo = archiveItems.find((item) => item.videoUrl);
+  const featuredArchive = archiveItems.find((item) => item.image) ?? archiveItems[0];
   const featuredPhoto = galleryItems.find((item) => item.category === "Архив") ?? galleryItems[0];
+  const todayItems = [
+    featuredArticle && {
+      label: "статья",
+      title: featuredArticle.title,
+      text: featuredArticle.excerpt,
+      href: `/articles/${featuredArticle.slug}`,
+      cta: "Читать",
+      image: "/images/archive/spbsj-jewish-petersburg.jpg"
+    },
+    {
+      label: "экскурсия",
+      title: "Еврейский Петербург: дворы и судьбы",
+      text: services[1]?.text ?? "Авторский маршрут по еврейскому Петербургу.",
+      href: "/tours",
+      cta: "Подробнее",
+      image: "/images/routes/evrei-peterburga-cover.webp"
+    },
+    featuredVideo && {
+      label: "видео",
+      title: featuredVideo.title,
+      text: featuredVideo.excerpt,
+      href: "/archive?type=видео",
+      cta: "Смотреть",
+      image: "/images/viktor/viktor-amchislavsky-hero.webp"
+    }
+  ].filter((item): item is { label: string; title: string; text: string; href: string; cta: string; image: string } => Boolean(item));
 
   return (
     <>
       <section className="hero">
+        <div className="hero-media" aria-hidden="true">
+          <Image
+            src="/images/viktor/viktor-amchislavsky-hero.webp"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+          />
+        </div>
         <div className="hero-copy">
-          <p className="eyebrow">Бемидбар · Еврейский Петербург · Русско-еврейская история</p>
-          <h1>Еврейский Петербург. История. Память. Люди.</h1>
+          <p className="eyebrow">Интеллектуальный портал</p>
+          <h1>Еврейский Петербург</h1>
+          <p className="hero-subline">История, память и люди.</p>
           <p className="lead">
             Авторские экскурсии, лекции и исследования Виктора Амчиславского о
             еврейском Петербурге, городской памяти и скрытых слоях истории.
@@ -38,25 +75,15 @@ export default function HomePage() {
               Выбрать экскурсию
             </Link>
             <Link className="button button-secondary" href="/contacts">
-              Связаться с Виктором
+              О проекте
             </Link>
           </div>
         </div>
-        <figure className="hero-image">
-          <Image
-            src="/images/viktor/viktor-amchislavsky-hero.webp"
-            alt="Портрет Виктора Амчиславского, историка и гида по еврейскому Петербургу"
-            fill
-            priority
-            sizes="(max-width: 900px) 100vw, 46vw"
-          />
-          <figcaption>Виктор Амчиславский, Петербург</figcaption>
-        </figure>
       </section>
 
       <StatusStrip />
 
-      <section className="section split-section viktor-identity">
+      <section className="section split-section viktor-identity light-section">
         <div>
           <p className="eyebrow">Автор портала</p>
           <h2>Виктор Амчиславский</h2>
@@ -70,7 +97,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section trust-section compact-section">
+      <section className="section trust-section compact-section light-section">
         <p className="eyebrow">Доверие и контекст</p>
         <div className="trust-grid" aria-label="Площадки и проекты">
           <span>Дом культуры Льва Лурье</span>
@@ -80,7 +107,67 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section seo-text">
+      <section className="section home-digest light-section">
+        <div className="digest-column today-column">
+          <div className="section-heading">
+            <p className="eyebrow">Сегодня в Бемидбар</p>
+            <h2>Новые тексты, маршруты и видео</h2>
+          </div>
+          <div className="today-grid">
+            {todayItems.map((item) => (
+              <article className="today-card" key={item.title}>
+                <div className="today-card-image">
+                  <Image src={item.image} alt="" fill sizes="(max-width: 900px) 100vw, 18vw" />
+                </div>
+                <span className="badge">{item.label}</span>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+                <Link className="text-link" href={item.href}>
+                  {item.cta}
+                </Link>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        <div className="digest-column archive-feature">
+          <div className="section-heading">
+            <p className="eyebrow">Из архива</p>
+            <Link className="section-more" href="/archive">
+              Смотреть весь архив
+            </Link>
+          </div>
+          <article className="archive-feature-card">
+            {featuredArchive.image && (
+              <div className="archive-feature-image">
+                <Image src={featuredArchive.image} alt={`${featuredArchive.title}: архивный материал`} fill sizes="(max-width: 900px) 100vw, 34vw" />
+              </div>
+            )}
+            <h2>{featuredArchive.title}</h2>
+            <p>{featuredArchive.excerpt}</p>
+            <span>{featuredArchive.date} · {featuredArchive.source}</span>
+          </article>
+        </div>
+
+        <div className="digest-column gallery-feature">
+          <div className="section-heading">
+            <p className="eyebrow">Новое в галерее</p>
+            <Link className="section-more" href="/gallery">
+              Смотреть все
+            </Link>
+          </div>
+          <div className="gallery-mini-grid">
+            {galleryItems.map((item) => (
+              <div className="gallery-mini" key={item.title}>
+                <Image src={item.image} alt={`${item.title}: ${item.caption}`} fill sizes="(max-width: 900px) 33vw, 10vw" />
+              </div>
+            ))}
+          </div>
+          <p>Фотографии и документы из архива еврейского Петербурга.</p>
+        </div>
+      </section>
+
+      <section className="section seo-text light-section">
         <p className="eyebrow">Бемидбар</p>
         <h2>Еврейский Петербург, городская память и русско-еврейская история</h2>
         <p>
@@ -103,7 +190,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section archive-slice">
+      <section className="section archive-slice light-section">
         <div className="section-heading">
           <p className="eyebrow">Из архива</p>
           <h2>Тексты, видео и визуальная память</h2>
@@ -144,7 +231,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section light-section">
         <div className="section-heading">
           <p className="eyebrow">Экскурсии и лекции</p>
           <h2>Город как архив, текст и живое свидетельство</h2>
@@ -165,7 +252,7 @@ export default function HomePage() {
 
       <ReviewsSection limit={3} />
 
-      <section className="section">
+      <section className="section light-section">
         <div className="section-heading">
           <p className="eyebrow">Статьи</p>
           <h2>Тексты о памяти, городе и традиции</h2>

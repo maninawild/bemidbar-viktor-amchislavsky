@@ -46,7 +46,7 @@ export default function ServicesPage() {
         </p>
       </section>
 
-      <section className="section archive-intro compact-section">
+      <section className="section archive-intro compact-section light-section">
         <div>
           <p className="eyebrow">Авторские маршруты</p>
           <h2>Город как архив, биография и культурная сцена</h2>
@@ -58,7 +58,7 @@ export default function ServicesPage() {
         </p>
       </section>
 
-      <section className="section seo-text compact-section">
+      <section className="section seo-text compact-section light-section">
         <p className="eyebrow">Экскурсии по еврейскому Петербургу</p>
         <h2>Маршруты для частных прогулок, групп и образовательных программ</h2>
         <p>
@@ -81,7 +81,7 @@ export default function ServicesPage() {
       </section>
 
       {routeCategories.map((category) => (
-        <section className="section route-category" key={category.title}>
+        <section className="section route-category light-section" key={category.title}>
           <div className="section-heading">
             <p className="eyebrow">Категория</p>
             <h2>{category.title}</h2>
@@ -136,7 +136,7 @@ export default function ServicesPage() {
 
       <ReviewsSection limit={6} />
 
-      <section className="section split-section">
+      <section className="section split-section light-section">
         <div>
           <p className="eyebrow">Индивидуальный запрос</p>
           <h2>Консультации и авторские темы</h2>

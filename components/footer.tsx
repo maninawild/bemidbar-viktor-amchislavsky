@@ -6,9 +6,9 @@ import { SocialLinks } from "@/components/social-links";
 export function Footer() {
   return (
     <footer className="footer">
-      <div>
+      <div className="footer-brand">
         <p className="footer-title">{site.name}</p>
-        <p>{site.subtitle}</p>
+        <p>Еврейский Петербург</p>
       </div>
       <nav aria-label="Навигация в подвале">
         {navItems.map((item) => (
@@ -18,7 +18,7 @@ export function Footer() {
         ))}
       </nav>
       <div className="footer-contact">
-        <ProtectedEmail className="email-action" />
+        <ProtectedEmail className="email-action footer-email" />
         <SocialLinks />
       </div>
     </footer>
