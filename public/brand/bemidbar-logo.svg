@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="300" viewBox="0 0 960 300" role="img" aria-labelledby="title desc">
+  <title id="title">БЕМИДБАР</title>
+  <desc id="desc">Логотип проекта Бемидбар с подписью Еврейский Петербург, Виктор Амчиславский.</desc>
+  <defs>
+    <style>
+      @font-face {
+        font-family: "Hummus";
+        src: url("../fonts/hummus/hummus.ttf") format("truetype");
+      }
+      .wordmark {
+        font-family: "Hummus", "Times New Roman", serif;
+        font-size: 104px;
+        letter-spacing: 10px;
+      }
+      .subtitle {
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 24px;
+        letter-spacing: 5px;
+      }
+    </style>
+  </defs>
+  <path d="M88 151h235M637 151h235" fill="none" stroke="#b99352" stroke-width="2"/>
+  <path d="M480 144l10 10-10 10-10-10z" fill="#b99352"/>
+  <path d="M438 151h84" fill="none" stroke="#dcc28d" stroke-width="1"/>
+  <text class="wordmark" x="480" y="122" fill="#dcc28d" text-anchor="middle">БЕМИДБАР</text>
+  <text class="subtitle" x="480" y="204" fill="#f4efe4" text-anchor="middle">ЕВРЕЙСКИЙ ПЕТЕРБУРГ</text>
+  <text class="subtitle" x="480" y="244" fill="#cfc4af" text-anchor="middle">ВИКТОР АМЧИСЛАВСКИЙ</text>
+</svg>

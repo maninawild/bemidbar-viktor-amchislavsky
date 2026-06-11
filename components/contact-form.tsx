@@ -1,7 +1,6 @@
 "use client";
 
 import { FormEvent, useEffect, useState } from "react";
-import { ObfuscatedEmailText, ProtectedEmail } from "@/components/protected-email";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
@@ -67,8 +66,7 @@ export function ContactForm() {
       )}
       {status === "error" && (
         <p className="form-note" role="alert">
-          Сейчас форму не удалось отправить. Можно написать напрямую:{" "}
-          <ObfuscatedEmailText /> или нажать <ProtectedEmail className="text-button" />.
+          Сейчас форму не удалось отправить. Попробуйте ещё раз чуть позже.
         </p>
       )}
     </form>

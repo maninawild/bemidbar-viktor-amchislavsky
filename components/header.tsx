@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { navItems, site } from "@/lib/site";
+import { BemidbarLogo } from "@/components/bemidbar-logo";
+import { navItems } from "@/lib/site";
 import { SocialLinks } from "@/components/social-links";
 
 export function Header() {
@@ -11,8 +12,7 @@ export function Header() {
   return (
     <header className="site-header">
       <Link className="brand" href="/" aria-label="На главную">
-        <span>{site.name}</span>
-        <small>{site.subtitle}</small>
+        <BemidbarLogo variant="header" theme="dark" showSubtitle={false} />
       </Link>
       <nav className="nav" aria-label="Основная навигация">
         {navItems.map((item) => {

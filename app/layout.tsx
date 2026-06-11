@@ -55,6 +55,9 @@ export const metadata: Metadata = {
       en: "/en",
       yi: "/yi"
     }
+  },
+  icons: {
+    icon: "/favicon.svg"
   }
 };
 

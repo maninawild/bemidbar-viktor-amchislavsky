@@ -29,6 +29,7 @@ export const navItems = [
   { href: "/", label: "Главная" },
   { href: "/tours", label: "Экскурсии и лекции" },
   { href: "/articles", label: "Статьи" },
+  { href: "/library", label: "Библиотека" },
   { href: "/archive", label: "Архив" },
   { href: "/gallery", label: "Галерея" },
   { href: "/reviews", label: "Отзывы" },
@@ -433,14 +434,12 @@ export const reviews: Review[] = [
 ];
 
 export type ArchiveType =
-  | "фото"
-  | "видео"
-  | "лекции"
-  | "статьи"
-  | "упоминания"
-  | "внешние страницы"
-  | "архивные публикации"
-  | "маршруты / события";
+  | "Публикация"
+  | "Видео"
+  | "Экскурсия"
+  | "Лекция"
+  | "Афиша"
+  | "Интервью";
 
 export type ArchiveItem = {
   title: string;
@@ -456,73 +455,108 @@ export type ArchiveItem = {
 
 export const archiveFilters = [
   { label: "Все", value: "all" },
-  { label: "Видео", value: "видео" },
-  { label: "Фото", value: "фото" },
-  { label: "Статьи", value: "статьи" },
-  { label: "Маршруты", value: "маршруты / события" },
-  { label: "Упоминания", value: "упоминания" }
+  { label: "Видео", value: "Видео" },
+  { label: "Публикации", value: "Публикация" },
+  { label: "Экскурсии", value: "Экскурсия" },
+  { label: "Лекции", value: "Лекция" },
+  { label: "Афиши", value: "Афиша" }
 ];
 
 export const archiveItems: ArchiveItem[] = [
   {
+    title: "Виктор Амчиславский — Дом культуры Льва Лурье",
+    type: "Публикация",
+    date: "Профиль",
+    source: "Дом культуры Льва Лурье",
+    excerpt:
+      "Профиль Виктора Амчиславского на сайте Дома культуры Льва Лурье: публичная страница автора экскурсий и лекций о Петербурге, памяти и русско-еврейской культуре.",
+    image: "/images/viktor/viktor-amchislavsky-hero.webp",
+    externalUrl: "https://dklurie.ru/about/persons/viktor-amchislavskiy/",
+    tags: ["профиль", "ДК Льва Лурье", "автор", "экскурсии"]
+  },
+  {
+    title: "Отзывы слушателей о маршрутах Виктора Амчиславского",
+    type: "Публикация",
+    date: "Публичный архив",
+    source: "Дом культуры Льва Лурье",
+    excerpt:
+      "Публичная подборка отзывов слушателей о лекциях и экскурсиях Виктора Амчиславского в Доме культуры Льва Лурье.",
+    image: "/images/archive/spbsj-jewish-petersburg.jpg",
+    externalUrl: "https://dklurie.ru/about/reviews/?AUTHOR=15488",
+    tags: ["отзывы", "ДК Льва Лурье", "слушатели", "доверие"]
+  },
+  {
+    title: "Маршруты Виктора Амчиславского в архиве ДК Льва Лурье",
+    type: "Экскурсия",
+    date: "Архив маршрутов",
+    source: "Дом культуры Льва Лурье",
+    excerpt:
+      "Публичный контекст авторских прогулок и лекций Виктора: еврейский Петербург, городские биографии, дачные районы и культурная память.",
+    image: "/images/viktor-2.jpg",
+    externalUrl: "https://dklurie.ru/about/persons/viktor-amchislavskiy/",
+    tags: ["маршруты", "экскурсии", "ДК Льва Лурье", "Петербург"]
+  },
+  {
     title: "Лекции Виктора Амчиславского для НКО «Ева»",
-    type: "видео",
+    type: "Видео",
     date: "Видеоархив",
     source: "YouTube",
     excerpt:
       "Плейлист лекций Виктора Амчиславского для НКО «Ева»: русско-еврейская история, культурная память и традиция в авторском изложении.",
+    image: "/images/viktor-3.jpg",
     videoUrl: "https://www.youtube.com/embed/videoseries?list=PLjkJ6mGKfk1IrF6CqdqapASvIlJV9bsko",
     externalUrl: "https://www.youtube.com/playlist?list=PLjkJ6mGKfk1IrF6CqdqapASvIlJV9bsko",
     tags: ["видео", "лекции", "НКО Ева", "YouTube"]
   },
   {
     title: "Лекция Виктора Амчиславского для НКО «Ева»",
-    type: "видео",
+    type: "Лекция",
     date: "Видео",
     source: "YouTube",
     excerpt:
       "Отдельная видеолекция из публичного YouTube-архива НКО «Ева», добавленная в медиатеку сайта.",
+    image: "/images/viktor-4.jpg",
     videoUrl: "https://www.youtube.com/embed/WluYUCVykO0",
     externalUrl: "https://www.youtube.com/watch?v=WluYUCVykO0",
     tags: ["видео", "лекции", "НКО Ева", "YouTube"]
   },
   {
     title: "Евреи Васильевского острова, или прогулка вокруг Левиафана",
-    type: "маршруты / события",
+    type: "Экскурсия",
     date: "2017",
     source: "Sputnik8",
     excerpt:
       "Пешеходная экскурсия по еврейскому Васильевскому острову: синагога, дом с магендавидами, Левиафан, сиротский приют и городские легенды.",
+    image: "/images/viktor-1.jpg",
     externalUrl:
       "https://www.sputnik8.com/ru/st-petersburg/activities/17688-evrei-vasilevskogo-ostrova-ili-progulka-vokrug-leviafana",
     tags: ["маршрут", "Васильевский остров", "Sputnik8", "еврейский Петербург"]
   },
   {
     title: "Евреи Петербурга: от Переца до Сыркина",
-    type: "маршруты / события",
+    type: "Афиша",
     date: "24 мая 2026",
     source: "Большая Хоральная синагога",
     excerpt:
-      "Событийная страница маршрута Виктора Амчиславского о еврейских адресах Петербурга от Переца до Сыркина. Исходная страница временно не отдала полный текст, поэтому описание и подписи требуют ручной сверки.",
+      "Анонс встречи и авторского маршрута Виктора Амчиславского по еврейскому Петербургу: городские адреса, культурные биографии и память общины.",
     image: "/images/routes/evrei-peterburga-cover.webp",
-    externalUrl:
-      "https://sinagoga.jeps.ru/meropriyatiya-sinagogi/evrei-peterburga-ot-peretcza-do-syirkina-v-amchislavskij-24-maya-2026-goda.html",
-    tags: ["маршрут", "2026", "Большая Хоральная синагога", "TODO: сверить описание и подписи"]
+    tags: ["афиша", "2026", "Большая Хоральная синагога", "еврейский Петербург"]
   },
   {
     title: "Евреи в Петербурге: легендарные адреса и Большая Хоральная синагога",
-    type: "маршруты / события",
+    type: "Экскурсия",
     date: "2020",
     source: "JEvents",
     excerpt:
       "Анонс маршрута с Большой Хоральной синагогой и легендарными адресами еврейского Петербурга; источник фиксирует статус Виктора как куратора библиотеки БХС и ведущего гида.",
+    image: "/images/routes/evrei-peterburga-cover.webp",
     externalUrl:
       "https://jevents.ru/2019/ekskursiya-viktora-amchislavskogo-evrei-v-peterburge-legendarnye-adresa-i-bolshaya-horalnaya-sinagoga/",
     tags: ["маршрут", "Большая Хоральная синагога", "JEvents", "еврейский Петербург"]
   },
   {
     title: "Из-за черты оседлости",
-    type: "статьи",
+    type: "Публикация",
     date: "Архив",
     source: "Санкт-Петербургский союз журналистов",
     excerpt:
@@ -533,13 +567,14 @@ export const archiveItems: ArchiveItem[] = [
   },
   {
     title: "Церковный документ и три еврея",
-    type: "архивные публикации",
+    type: "Публикация",
     date: "Архив",
     source: "Информационный портал еврейской религиозной общины Санкт-Петербурга",
     excerpt:
-      "Архивная публикация Виктора Амчиславского на старом портале JEPS о раннем документальном свидетельстве еврейской общины Петербурга. Полный текст и изображения требуют ручной редакторской сверки после импорта из legacy-кодировки Windows-1251.",
+      "Архивная публикация Виктора Амчиславского на старом портале JEPS о раннем документальном свидетельстве еврейской общины Петербурга.",
+    image: "/images/archive/spbsj-jewish-petersburg.jpg",
     externalUrl: "https://old.jeps.ru/modules.php?name=Content&pa=showpage&pid=2246",
-    tags: ["публикация", "архив", "JEPS", "история общины", "TODO: импорт полного текста"]
+    tags: ["публикация", "архив", "JEPS", "история общины"]
   }
 ];
 
@@ -591,7 +626,7 @@ export const galleryItems: GalleryItem[] = [
   },
   {
     title: "Из-за черты оседлости",
-    caption: "Архивное изображение для будущей публикации и визуальной библиотеки.",
+    caption: "Архивное изображение для визуальной библиотеки.",
     year: "Архив",
     source: "Санкт-Петербургский союз журналистов",
     relatedRoute: "Еврейский Петербург",

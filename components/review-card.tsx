@@ -1,11 +1,12 @@
 import Link from "next/link";
 import type { Review } from "@/lib/site";
+import { OrnamentIcon } from "@/components/ornament-icon";
 
 export function ReviewCard({ review }: { review: Review }) {
   return (
     <article className="review-card">
       <div className="review-card-top">
-        <span className="badge">отзыв</span>
+        <span className="badge badge-with-icon"><OrnamentIcon name="lurie" />отзыв</span>
         <span>{review.date}</span>
       </div>
       <h3>{review.excursionTitle}</h3>

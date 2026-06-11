@@ -1,5 +1,5 @@
 import { ContactForm } from "@/components/contact-form";
-import { ObfuscatedEmailText, ProtectedEmail } from "@/components/protected-email";
+import { OrnamentIcon } from "@/components/ornament-icon";
 import { SocialLinks } from "@/components/social-links";
 
 export function ContactBlock() {
@@ -7,19 +7,16 @@ export function ContactBlock() {
     <section className="section contact-section" id="contact">
       <div className="section-heading">
         <p className="eyebrow">Контакты</p>
-        <h2>Обсудить экскурсию, лекцию или исследовательский запрос</h2>
+        <h2>Оставить заявку на экскурсию, лекцию или исследовательский запрос</h2>
       </div>
       <div className="contact-grid">
         <div className="contact-panel">
+          <OrnamentIcon name="contact" />
           <p>
             Напишите Виктору, если хотите выбрать маршрут, пригласить на лекцию,
             уточнить тему консультации или предложить культурный проект.
           </p>
           <div className="contact-links">
-            <ProtectedEmail className="email-action" />
-            <p className="email-obfuscated">
-              Для ручного письма: <ObfuscatedEmailText />
-            </p>
             <SocialLinks />
           </div>
         </div>

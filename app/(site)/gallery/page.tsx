@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { JsonLd } from "@/components/json-ld";
+import { OrnamentIcon } from "@/components/ornament-icon";
 import { galleryCategories, galleryItems } from "@/lib/site";
 import { breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
 
@@ -20,6 +21,10 @@ type GalleryPageProps = {
 
 function isActive(category: string | undefined, value: string) {
   return value === "Все" ? !category || category === "Все" : category === value;
+}
+
+function cleanCaption(caption: string) {
+  return caption;
 }
 
 export default function GalleryPage({ searchParams }: GalleryPageProps) {
@@ -60,18 +65,18 @@ export default function GalleryPage({ searchParams }: GalleryPageProps) {
               <div className="gallery-card-image">
                 <Image
                   src={item.image}
-                  alt={`${item.title}: ${item.caption}`}
+                  alt={`${item.title}: ${cleanCaption(item.caption)}`}
                   fill
                   sizes="(max-width: 900px) 100vw, 33vw"
                 />
               </div>
               <div className="gallery-card-copy">
                 <div className="archive-card-top">
-                  <span className="badge">{item.category}</span>
+                  <span className="badge badge-with-icon"><OrnamentIcon name="gallery" />{item.category}</span>
                   <span>{item.year}</span>
                 </div>
                 <h2>{item.title}</h2>
-                <p>{item.caption.split(/(?<=[.!?])\s+/)[0]}</p>
+                <p>{cleanCaption(item.caption).split(/(?<=[.!?])\s+/)[0]}</p>
                 <div className="archive-card-bottom">
                   <span>{item.source}</span>
                   {item.relatedRoute && <span>{item.relatedRoute}</span>}

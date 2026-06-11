@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ContactBlock } from "@/components/contact-block";
 import { JsonLd } from "@/components/json-ld";
+import { OrnamentIcon } from "@/components/ornament-icon";
 import { ReviewsSection } from "@/components/reviews-section";
 import { routeCategories, site, trustMarker, type ViktorRoute } from "@/lib/site";
 import { breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
@@ -75,7 +76,7 @@ export default function ServicesPage() {
             Отзывы слушателей
           </Link>
           <Link className="text-link" href="/contacts">
-            Обсудить экскурсию
+            Оставить заявку
           </Link>
         </div>
       </section>
@@ -100,7 +101,7 @@ export default function ServicesPage() {
                   </div>
                 )}
                 <div className="route-card-top">
-                  <span className="route-category-name">{route.category}</span>
+                  <span className="route-category-name"><OrnamentIcon name="tour" />{route.category}</span>
                 </div>
                 <h3>{route.title}</h3>
                 <p>{shortSentence(route.description)}</p>
@@ -110,7 +111,7 @@ export default function ServicesPage() {
                   ))}
                 </div>
                 <Link className="route-cta" href={contactHref(route)}>
-                  Обсудить маршрут
+                  Оставить заявку
                 </Link>
               </article>
             ))}

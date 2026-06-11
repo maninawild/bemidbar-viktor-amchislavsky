@@ -24,10 +24,10 @@ export const seoKeywords = [
 ];
 
 export const ogImage = {
-  url: "/images/viktor/viktor-amchislavsky-hero.webp",
-  width: 1800,
-  height: 1200,
-  alt: "Портрет Виктора Амчиславского, гида по еврейскому Петербургу"
+  url: "/brand/bemidbar-og.png",
+  width: 1200,
+  height: 630,
+  alt: "Бемидбар — Еврейский Петербург, Виктор Амчиславский"
 };
 
 export function pageMetadata({

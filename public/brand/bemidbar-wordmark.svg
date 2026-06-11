@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="140" viewBox="0 0 760 140" role="img" aria-labelledby="title">
+  <title id="title">БЕМИДБАР</title>
+  <defs>
+    <style>
+      @font-face {
+        font-family: "Hummus";
+        src: url("../fonts/hummus/hummus.ttf") format("truetype");
+      }
+      .wordmark {
+        font-family: "Hummus", "Times New Roman", serif;
+        font-size: 104px;
+        letter-spacing: 10px;
+      }
+    </style>
+  </defs>
+  <text class="wordmark" x="380" y="102" fill="#dcc28d" text-anchor="middle">БЕМИДБАР</text>
+</svg>

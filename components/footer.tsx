@@ -1,14 +1,13 @@
 import Link from "next/link";
-import { navItems, site } from "@/lib/site";
-import { ProtectedEmail } from "@/components/protected-email";
+import { BemidbarLogo } from "@/components/bemidbar-logo";
+import { navItems } from "@/lib/site";
 import { SocialLinks } from "@/components/social-links";
 
 export function Footer() {
   return (
     <footer className="footer">
       <div className="footer-brand">
-        <p className="footer-title">{site.name}</p>
-        <p>Еврейский Петербург</p>
+        <BemidbarLogo variant="footer" theme="dark" showSubtitle />
       </div>
       <nav aria-label="Навигация в подвале">
         {navItems.map((item) => (
@@ -18,7 +17,9 @@ export function Footer() {
         ))}
       </nav>
       <div className="footer-contact">
-        <ProtectedEmail className="email-action footer-email" />
+        <Link className="email-action footer-email" href="/contacts">
+          Оставить заявку
+        </Link>
         <SocialLinks />
       </div>
     </footer>

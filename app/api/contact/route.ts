@@ -8,7 +8,7 @@ type ContactPayload = {
 };
 
 function getContactToEmail() {
-  return process.env.CONTACT_TO_EMAIL ?? ["vicam2001", "mail", "ru"].join("@");
+  return process.env.GUIDE_NOTIFICATION_EMAIL ?? process.env.ADMIN_EMAIL ?? "";
 }
 
 export async function POST(request: Request) {
@@ -18,13 +18,9 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Заполните обязательные поля." }, { status: 400 });
   }
 
-  // TODO: Connect email delivery before production launch.
-  // Recommended Vercel setup:
-  // 1. Add RESEND_API_KEY and CONTACT_TO_EMAIL=vicam2001@mail.ru in Vercel env vars.
-  // 2. Install `resend`.
-  // 3. Send an email here with the validated payload.
+  // Connect email delivery server-side with RESEND_API_KEY.
   console.info("Contact request for Viktor Amchislavsky", {
-    to: getContactToEmail(),
+    hasNotificationEmail: Boolean(getContactToEmail()),
     name: payload.name,
     contact: payload.contact,
     topic: payload.topic,

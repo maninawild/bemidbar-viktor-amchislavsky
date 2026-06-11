@@ -4,7 +4,7 @@ export function FloatingCta() {
   return (
     <Link className="floating-cta" href="/contacts?tema=Экскурсия">
       <span aria-hidden="true">□</span>
-      Обсудить экскурсию
+      Оставить заявку
     </Link>
   );
 }

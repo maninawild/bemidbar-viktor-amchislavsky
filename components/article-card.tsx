@@ -1,9 +1,11 @@
 import Link from "next/link";
 import { Article } from "@/lib/articles";
+import { OrnamentIcon } from "@/components/ornament-icon";
 
 export function ArticleCard({ article }: { article: Article }) {
   return (
     <article className="article-card">
+      <OrnamentIcon name="article" />
       <p className="meta">
         {new Intl.DateTimeFormat("ru-RU", {
           day: "numeric",

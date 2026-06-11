@@ -5,14 +5,9 @@ type ProtectedEmailProps = {
   iconOnly?: boolean;
 };
 
-function getEmail() {
-  return ["vicam2001", "mail", "ru"];
-}
-
 export function ProtectedEmail({ className = "", iconOnly = false }: ProtectedEmailProps) {
   function openEmail() {
-    const [name, host, zone] = getEmail();
-    window.location.href = `mailto:${name}@${host}.${zone}`;
+    window.location.href = "/contacts";
   }
 
   return (
@@ -29,7 +24,7 @@ export function ProtectedEmail({ className = "", iconOnly = false }: ProtectedEm
 }
 
 export function ObfuscatedEmailText() {
-  return <span>vicam2001 [at] mail [dot] ru</span>;
+  return <span>адрес не публикуется на сайте</span>;
 }
 
 function EmailIcon() {

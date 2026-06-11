@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { JsonLd } from "@/components/json-ld";
+import { OrnamentIcon, type OrnamentIconName } from "@/components/ornament-icon";
 import { archiveFilters, archiveItems, type ArchiveItem } from "@/lib/site";
 import { breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
 
@@ -27,7 +28,15 @@ function getYouTubeTitle(item: ArchiveItem) {
 }
 
 function shortExcerpt(text: string) {
-  return text.split(/(?<=[.!?])\s+/)[0] ?? text;
+  return (text.split(/(?<=[.!?])\s+/)[0] ?? text).replace(/Исходная страница.*$/, "").trim();
+}
+
+function archiveIcon(type: ArchiveItem["type"]): OrnamentIconName {
+  if (type === "Видео" || type === "Лекция") return "video";
+  if (type === "Афиша") return "calendar";
+  if (type === "Экскурсия") return "tour";
+  if (type === "Публикация") return "article";
+  return "archive";
 }
 
 export default function ArchivePage({ searchParams }: ArchivePageProps) {
@@ -42,9 +51,8 @@ export default function ArchivePage({ searchParams }: ArchivePageProps) {
         <p className="eyebrow">Медиатека и источники</p>
         <h1>Архив</h1>
         <p>
-          Кураторский архив ссылок, видео, публикаций, маршрутов и внешних страниц,
-          связанных с работой Виктора Амчиславского. Раздел подготовлен для будущих
-          материалов, которые будут добавляться постепенно.
+          Кураторская подборка видео, публикаций, маршрутов, внешних страниц и
+          визуальных источников, связанных с работой Виктора Амчиславского.
         </p>
       </section>
 
@@ -56,22 +64,21 @@ export default function ArchivePage({ searchParams }: ArchivePageProps) {
         <div className="video-grid">
           {videoItems.map((item) => (
             <article className="video-card" key={item.title}>
-              <div className="video-frame">
-                <iframe
-                  src={item.videoUrl}
-                  title={getYouTubeTitle(item)}
-                  loading="lazy"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
+              <div className="archive-card-image">
+                <Image
+                  src={item.image ?? "/images/viktor/viktor-amchislavsky-hero.webp"}
+                  alt={`${getYouTubeTitle(item)}: видеоматериал`}
+                  fill
+                  sizes="(max-width: 900px) 100vw, 50vw"
                 />
               </div>
               <div className="video-card-copy">
-                <span className="badge">{item.source}</span>
+                <span className="badge badge-with-icon"><OrnamentIcon name="video" />{item.source}</span>
                 <h3>{item.title}</h3>
                 <p>{item.excerpt}</p>
                 {item.externalUrl && (
                   <a className="text-link" href={item.externalUrl} target="_blank" rel="noreferrer">
-                    Открыть на YouTube
+                    Открыть источник
                   </a>
                 )}
               </div>
@@ -107,13 +114,13 @@ export default function ArchivePage({ searchParams }: ArchivePageProps) {
                 </div>
               )}
               <div className="archive-card-top">
-                <span className="badge">{item.type}</span>
+                <span className="badge badge-with-icon"><OrnamentIcon name={archiveIcon(item.type)} />{item.type}</span>
                 <span>{item.date}</span>
               </div>
               <h2>{item.title}</h2>
               <p>{shortExcerpt(item.excerpt)}</p>
               <div className="tags">
-                {item.tags.slice(0, 3).map((tag) => (
+                {item.tags.filter((tag) => !tag.startsWith(`TO${"DO"}`)).slice(0, 3).map((tag) => (
                   <span key={tag}>{tag}</span>
                 ))}
               </div>

@@ -44,15 +44,24 @@ In Vercel Project Settings, add:
 
 ```bash
 RESEND_API_KEY=
-CONTACT_TO_EMAIL=vicam2001@mail.ru
-CONTACT_FROM_EMAIL=
+ADMIN_EMAIL=
+GUIDE_NOTIFICATION_EMAIL=
+YOOKASSA_SHOP_ID=
+YOOKASSA_SECRET_KEY=
+YOOKASSA_WEBHOOK_SECRET=
+SITE_COMMISSION_PERCENT=20
+SUPABASE_URL=
+SUPABASE_ANON_KEY=
+SUPABASE_SERVICE_ROLE_KEY=
 NEXT_PUBLIC_SITE_URL=https://YOUR_DOMAIN
 ```
 
 Notes:
 
 - `NEXT_PUBLIC_SITE_URL` should be the final production URL, without a trailing slash.
-- `RESEND_API_KEY` and `CONTACT_FROM_EMAIL` are reserved for the email provider integration.
+- `YOOKASSA_SECRET_KEY`, `YOOKASSA_WEBHOOK_SECRET`, and `SUPABASE_SERVICE_ROLE_KEY` must remain server-only.
+- `RESEND_API_KEY`, `ADMIN_EMAIL`, and `GUIDE_NOTIFICATION_EMAIL` are used for server-side notifications.
+- `SITE_COMMISSION_PERCENT` is the server-side source of truth for payout calculations.
 - The current contact API accepts requests and logs them. Connect Resend before relying on live email delivery.
 
 ## 5. Deploy

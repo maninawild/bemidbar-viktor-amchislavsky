@@ -1,4 +1,3 @@
-import { ProtectedEmail } from "@/components/protected-email";
 import { site } from "@/lib/site";
 
 type SocialLink = {
@@ -40,7 +39,6 @@ export function SocialLinks({ className = "" }: { className?: string }) {
           <SocialIcon icon={link.icon} />
         </a>
       ))}
-      <ProtectedEmail iconOnly />
     </div>
   );
 }
