@@ -10,6 +10,8 @@ The source page states that Hummus is free for any purpose, including commercial
 - `public/fonts/hummus/hummus.ttf`
 - `public/fonts/hummus/README.md`
 
+The visible `БЕМИДБАР` wordmark in the SVG and PNG logo files is converted to vector outlines from Hummus, so the logo does not fall back to a system font when SVG font loading is unavailable.
+
 ## Logo Files
 
 - `public/brand/bemidbar-logo.svg` - default full logo with subtitle.

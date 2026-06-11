@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArticleCard } from "@/components/article-card";
-import { BemidbarLogo } from "@/components/bemidbar-logo";
 import { ContactBlock } from "@/components/contact-block";
 import { JsonLd } from "@/components/json-ld";
 import { OrnamentIcon, type OrnamentIconName } from "@/components/ornament-icon";
@@ -99,8 +98,7 @@ export default function HomePage() {
         </div>
         <div className="hero-copy">
           <p className="eyebrow">Интеллектуальный портал</p>
-          <h1 className="sr-only">Бемидбар — Еврейский Петербург</h1>
-          <BemidbarLogo variant="hero" theme="dark" showSubtitle />
+          <h1>Еврейский Петербург</h1>
           <p className="hero-subline">История, память и люди.</p>
           <p className="lead">
             Авторские экскурсии, лекции и исследования Виктора Амчиславского о
