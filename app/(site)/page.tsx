@@ -81,7 +81,7 @@ export default function HomePage() {
       text: featuredVideo.excerpt,
       href: "/archive?type=Видео",
       cta: "Смотреть",
-      image: "/images/viktor/viktor-amchislavsky-hero.webp"
+      image: "/images/viktor-1.jpg"
     }
   ].filter((item): item is { label: string; title: string; text: string; href: string; cta: string; image: string } => Boolean(item));
 
@@ -100,7 +100,7 @@ export default function HomePage() {
       <section className="hero">
         <div className="hero-media" aria-hidden="true">
           <Image
-            src="/images/viktor/viktor-amchislavsky-hero.webp"
+            src="/images/viktor-1.jpg"
             alt=""
             fill
             priority
@@ -108,18 +108,18 @@ export default function HomePage() {
           />
         </div>
         <div className="hero-copy">
-          <p className="eyebrow">Интеллектуальный портал</p>
+          <p className="eyebrow">портал Виктора Амчиславского</p>
           <h1>Еврейский Петербург</h1>
           <p className="hero-subline">История, память и люди.</p>
           <p className="lead">
-            Авторские экскурсии, лекции и исследования Виктора Амчиславского о
-            еврейском Петербурге, городской памяти и скрытых слоях истории.
+            Авторские экскурсии, лекции и исследования о еврейском Петербурге,
+            городской памяти и скрытых слоях истории.
           </p>
           <div className="actions">
             <Link className="button button-primary" href="/tours#contact">
               Оставить заявку
             </Link>
-            <Link className="button button-secondary" href="/contacts">
+            <Link className="button button-secondary" href="/about">
               О проекте
             </Link>
           </div>
