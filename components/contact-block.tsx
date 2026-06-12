@@ -12,16 +12,10 @@ export function ContactBlock() {
       <div className="contact-grid">
         <div className="contact-panel">
           <OrnamentIcon name="contact" />
-          <h3>Коротко опишите запрос</h3>
           <p>
             Напишите Виктору, если хотите выбрать маршрут, пригласить на лекцию,
             уточнить тему консультации или предложить культурный проект.
           </p>
-          <ul>
-            <li>экскурсия или лекция</li>
-            <li>дата, город и формат</li>
-            <li>тема исследования или партнёрства</li>
-          </ul>
           <div className="contact-links">
             <SocialLinks />
           </div>

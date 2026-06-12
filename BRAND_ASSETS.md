@@ -19,13 +19,11 @@ The visible `БЕМИДБАР` wordmark in the SVG and PNG logo files is convert
 - `public/brand/bemidbar-logo-light.svg` - full logo for light backgrounds.
 - `public/brand/bemidbar-wordmark.svg` - wordmark-only asset.
 - `public/brand/bemidbar-og.png` - Open Graph preview image.
-- `public/assets/bemidbar-logo.svg` - standalone Hummus-style wordmark for compact UI.
-- `public/assets/bemidbar-logo.png` - transparent PNG version of the standalone wordmark.
 - `public/favicon.svg` - browser icon.
 
 ## Usage
 
-- Header: standalone Hummus-style wordmark through `components/bemidbar-logo.tsx`.
+- Header: wordmark-only asset through `components/bemidbar-logo.tsx`.
 - Home hero: full dark-background logo with subtitle.
 - Footer: full dark-background logo with subtitle.
 - Social preview: `public/brand/bemidbar-og.png`.

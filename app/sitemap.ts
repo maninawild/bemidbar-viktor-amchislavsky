@@ -4,18 +4,7 @@ import { site } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
-  const staticRoutes = [
-    "/",
-    "/tours",
-    "/articles",
-    "/library",
-    "/jewish-pearls",
-    "/archive",
-    "/gallery",
-    "/reviews",
-    "/about",
-    "/contacts"
-  ];
+  const staticRoutes = ["/", "/tours", "/articles", "/library", "/archive", "/gallery", "/reviews", "/about", "/contacts"];
   const articleRoutes = getArticles().map((article) => ({
     url: `${site.url}/articles/${article.slug}`,
     lastModified: new Date(article.date),

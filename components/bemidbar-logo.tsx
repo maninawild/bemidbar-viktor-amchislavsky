@@ -42,6 +42,6 @@ function getLogoSrc({
   showSubtitle: boolean;
 }) {
   if (variant === "icon") return "/favicon.svg";
-  if (!showSubtitle) return "/assets/bemidbar-logo.svg";
+  if (!showSubtitle) return "/brand/bemidbar-wordmark.svg";
   return theme === "light" ? "/brand/bemidbar-logo-light.svg" : "/brand/bemidbar-logo-dark.svg";
 }

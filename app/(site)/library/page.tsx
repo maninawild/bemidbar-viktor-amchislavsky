@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { JsonLd } from "@/components/json-ld";
 import { OrnamentIcon } from "@/components/ornament-icon";
-import { VideoEmbed } from "@/components/video-embed";
-import { archiveItems } from "@/lib/site";
 import { breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
@@ -13,8 +11,6 @@ export const metadata: Metadata = pageMetadata({
 });
 
 export default function LibraryPage() {
-  const videoItems = archiveItems.filter((item) => item.videoUrl).slice(0, 2);
-
   return (
     <>
       <section className="page-hero library-hero">
@@ -33,25 +29,6 @@ export default function LibraryPage() {
           <OrnamentIcon name="archive" />
           <OrnamentIcon name="article" />
           <OrnamentIcon name="heritage" />
-        </div>
-      </section>
-
-      <section className="section library-video-shelf light-section">
-        <div className="section-heading">
-          <p className="eyebrow">Видеоисточники</p>
-          <h2>Лекции из публичного видеоархива</h2>
-        </div>
-        <div className="video-grid">
-          {videoItems.map((item) => (
-            <article className="video-card" key={item.title}>
-              <VideoEmbed title={`${item.title} — ${item.source}`} videoUrl={item.videoUrl!} />
-              <div className="video-card-copy">
-                <span className="badge">{item.source}</span>
-                <h3>{item.title}</h3>
-                <p>{item.excerpt}</p>
-              </div>
-            </article>
-          ))}
         </div>
       </section>
 

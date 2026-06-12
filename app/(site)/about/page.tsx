@@ -25,7 +25,7 @@ export default function AboutPage() {
         </div>
         <figure className="portrait">
           <Image
-            src="/images/viktor-1.jpg"
+            src="/images/viktor/viktor-amchislavsky-hero.webp"
             alt="Портрет Виктора Амчиславского, историка, гида и лектора"
             fill
             sizes="(max-width: 900px) 100vw, 360px"
